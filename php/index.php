@@ -46,7 +46,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            perspective: 1px;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('turno6.jpg') no-repeat center center fixed;
+            background-size: cover;
+            transform: translateZ(-1px) scale(2);
+            z-index: -1;
+        }
+
         .form-container {
             text-align: center;
             background-color: #fff;
@@ -55,16 +72,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             width: 100%;
+            animation: fadeInUp 1s ease-out;
         }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .form-container h2 {
             margin-bottom: 20px;
             color: #333;
         }
+
         .form-container form {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
+
         .form-container label {
             margin-bottom: 10px;
             color: #333;
@@ -72,9 +104,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             display: flex;
             align-items: center;
         }
+
         .form-container label i {
             margin-right: 10px;
         }
+
         .form-container input[type="text"] {
             width: calc(100% - 20px);
             margin-bottom: 20px;
@@ -86,9 +120,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             outline: none;
             transition: border-color 0.3s;
         }
+
         .form-container input[type="text"]:focus {
             border-color: #78CAD2;
         }
+
         .form-container input[type="submit"] {
             width: 100%;
             padding: 12px;
@@ -100,9 +136,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.2s;
         }
+
         .form-container input[type="submit"]:hover {
             background-color: #A1D2CE;
         }
+
         .form-container input[type="submit"]:active {
             transform: scale(0.95);
         }
@@ -144,4 +182,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </script>
 </body>
 </html>
-
